@@ -1,0 +1,855 @@
+/* ==================== RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #140a2b;
+    color: white;
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 200px;
+    border-bottom: 1px solid #412567;
+    position: relative;
+}
+
+/* LOGO */
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    z-index: 10;
+}
+
+.logo span {
+    background: linear-gradient(135deg, #ff2ea6, #7a00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* NAV LINKS — center on desktop */
+.nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff2ea6;
+}
+
+/* GRADIENT SUBSCRIBE BUTTON */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ffcc33, #ff2ea6);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10;
+}
+
+.nav-btn .material-icons {
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.nav-btn:hover {
+    opacity: 0.85;
+    transform: scale(1.04);
+}
+
+/* HIDE the checkbox itself */
+.nav-toggle {
+    display: none;
+}
+
+/* HAMBURGER — hidden on desktop, shown on mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 10;
+    padding: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animate hamburger → X when checked */
+.nav-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.nav-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==================== BANNER ==================== */
+.banner {
+    height: 760px;
+    background: url("assets/hero-bg.png") center/cover no-repeat;
+    position: relative;
+}
+
+/* PODCAST CIRCLE */
+.circle {
+    position: absolute;
+    top: 101px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 380px;
+    height: 380px;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Dashed ring */
+.circle::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 3px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* MIC ICON centred inside circle */
+.mic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 170px;
+    pointer-events: none;
+}
+
+/* NEW BADGE */
+.badge {
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    background: #00ff88;
+    padding: 6px 14px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+/* BANNER TEXT + BUTTONS */
+.banner-content {
+    position: absolute;
+    top: 520px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 560px;
+}
+
+.banner-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.banner-content p {
+    margin: 14px 0 24px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+
+.banner-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* SPOTIFY BUTTON */
+.btn-main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ffcc33, #ff2ea6);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-main:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 28px rgba(255, 46, 166, 0.5);
+}
+
+/* SUBSCRIBE OUTLINE BUTTON */
+.btn-outline {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 13px 22px;
+    border-radius: 30px;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.btn-outline:hover {
+    background: #00ff88;
+    color: #140a2b;
+    transform: scale(1.04);
+}
+
+/* ==================== ABOUT ==================== */
+.about {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 100px 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-text {
+    text-align: center;
+    margin-bottom: 52px;
+}
+
+.about-text h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.85;
+}
+
+.about-join {
+    margin-top: 26px !important;
+}
+
+.about-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 56px;
+}
+
+/* Stats row — becomes 2×2 on mobile */
+.about-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: #00ff88;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* ==================== WHY CHOOSE ==================== */
+.why {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 120px 200px;
+    min-height: 1121px;
+}
+
+.why-title {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+/* Card base */
+.why-card {
+    background: #1e1040;
+    border-radius: 20px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.why-icon {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.why-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.why-card p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.75;
+}
+
+/* Top: 380px left | 790px right */
+.why-top-grid {
+    display: grid;
+    grid-template-columns: 380px 790px;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: start;
+}
+
+/* Tall left card */
+.why-card--tall {
+    width: 380px;
+    min-height: 480px;
+}
+
+/* Right stack */
+.why-right-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Short right cards — horizontal icon + text */
+.why-card--short {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+    min-height: 225px;
+}
+
+.why-card--short .why-icon {
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.why-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Bottom two equal cards */
+.why-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* ==================== EP + HOST CONTAINER ==================== */
+.ep-host-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    background: #1a0b2e;
+    padding: 120px 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.section-title {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+/* ==================== FEATURED EPISODES ==================== */
+.episodes {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.ep-card {
+    background: #1e1040;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ep-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* 16:9 iframe wrapper */
+.ep-video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: #0d0020;
+}
+
+.ep-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.ep-info {
+    padding: 22px 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.ep-info h3 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.ep-info p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.70);
+    line-height: 1.65;
+}
+
+.ep-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #00ff88;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.ep-duration .material-icons {
+    font-size: 18px;
+}
+
+/* ==================== MEET THE HOST ==================== */
+.host-section {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.host-card {
+    background: #1e1040;
+    border-radius: 20px;
+    padding: 44px 52px;
+    display: flex;
+    align-items: center;
+    gap: 52px;
+}
+
+.host-img-wrap {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.18);
+}
+
+.host-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.host-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.host-info h3 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.host-info p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.75;
+    max-width: 820px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: background 0.3s, transform 0.3s;
+    overflow: hidden;
+}
+
+.social-icon-link img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.social-icon-link:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: scale(1.12);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 412px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #1a0b2e;
+}
+
+.footer-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.footer-logo {
+    font-size: 42px;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-logo span {
+    background: linear-gradient(135deg, #ff2ea6, #7a00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-platforms {
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.platform-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.platform-link img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.platform-link:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.footer-divider {
+    width: 520px;
+    max-width: 90%;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.footer-copy {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.40);
+}
+
+/* ==================== RESPONSIVE — MEDIUM (576px – 992px) ==================== */
+@media (max-width: 992px) {
+
+    /* Navbar */
+    .navbar {
+        padding: 0 32px;
+        height: 72px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #1a0b2e;
+        border-bottom: 1px solid #412567;
+        z-index: 100;
+        padding: 12px 0;
+    }
+
+    .nav-links a {
+        padding: 14px 32px;
+        font-size: 17px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Show nav when checkbox checked */
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* About */
+    .about { padding: 72px 40px; }
+
+    /* Why */
+    .why {
+        padding: 80px 40px;
+        min-height: auto;
+    }
+
+    .why-top-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-card--tall {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .why-right-stack { flex-direction: column; }
+
+    .why-card--short {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .why-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Episodes & Host */
+    .ep-host-container { padding: 80px 40px; }
+    .episodes-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .host-card { padding: 32px; gap: 32px; }
+
+    /* Footer */
+    .footer { min-height: auto; }
+    .footer-platforms { gap: 24px; }
+    .footer-divider { width: 100%; }
+}
+
+/* ==================== RESPONSIVE — SMALL (up to 576px) ==================== */
+@media (max-width: 576px) {
+
+    /* Navbar */
+    .navbar {
+        padding: 0 20px;
+        height: 64px;
+    }
+
+    .logo { font-size: 24px; }
+
+    .nav-links { top: 64px; }
+
+    .nav-btn {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+
+    /* Banner */
+    .banner { height: auto; padding-bottom: 60px; }
+
+    .circle {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 48px auto 0;
+        width: 260px;
+        height: 260px;
+    }
+
+    .mic { font-size: 110px; }
+
+    .banner-content {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 90%;
+        margin: 24px auto 0;
+    }
+
+    .banner-content h1 { font-size: 34px; }
+
+    .banner-buttons { flex-direction: column; align-items: center; }
+
+    /* About */
+    .about { padding: 60px 20px; }
+    .about-text h2 { font-size: 32px; }
+    .about-text p { font-size: 15px; }
+
+    /* Stats: 2×2 grid on small screens */
+    .about-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 20px;
+        justify-items: center;
+    }
+
+    .stat-number { font-size: 36px; }
+
+    /* Why */
+    .why { padding: 60px 20px; }
+    .why-title { font-size: 30px; margin-bottom: 40px; }
+    .why-card h3 { font-size: 20px; }
+    .why-card--short { flex-direction: column; }
+
+    /* Episodes & Host */
+    .ep-host-container { padding: 60px 20px; }
+    .section-title { font-size: 30px; margin-bottom: 32px; }
+    .episodes-grid { grid-template-columns: 1fr; }
+
+    .ep-info h3 { font-size: 20px; }
+
+    .host-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 28px 20px;
+        gap: 20px;
+    }
+
+    .host-img-wrap { width: 120px; height: 120px; }
+
+    .social-icons { justify-content: center; }
+
+    /* Footer */
+    .footer-content { padding: 48px 20px; gap: 22px; }
+    .footer-logo { font-size: 30px; }
+    .footer-platforms { flex-direction: column; align-items: center; gap: 18px; }
+    .footer-divider { width: 100%; }
+}
