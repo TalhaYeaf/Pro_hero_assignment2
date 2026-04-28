@@ -10,6 +10,7 @@ body {
     color: white;
 }
 
+/* ── NAVBAR ─────────────────────────────────────── */
 .navbar {
     height: 92px;
     display: flex;
@@ -90,6 +91,7 @@ body {
     filter: brightness(0) invert(1);
 }
 
+/* ── BANNER ─────────────────────────────────────── */
 .banner {
     height: 760px;
     background: url("assets/hero-bg.png") center / cover no-repeat;
@@ -97,6 +99,12 @@ body {
     overflow: visible;
 }
 
+/*
+  circle-wrap:
+  - Centred absolutely on the banner
+  - Has a dashed ring via ::after
+  - Contains two layered images (gradient orb + mic) and the badge
+*/
 .circle-wrap {
     position: absolute;
     top: 90px;
@@ -104,9 +112,9 @@ body {
     transform: translateX(-50%);
     width: 380px;
     height: 380px;
-    background-image: url(assets/microphone.png)   ;
 }
 
+/* Dashed ring sits just outside the circle */
 .circle-wrap::after {
     content: "";
     position: absolute;
@@ -116,36 +124,58 @@ body {
     pointer-events: none;
 }
 
-.circle-img {
+/* Gradient orb — fills the whole circle-wrap */
+.circle-bg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    background: url("assets/hero-circle.png") center / cover no-repeat;
 }
 
+/* Microphone — centred on top of the gradient orb, ~60% size */
+.circle-mic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 58%;
+    height: 58%;
+    object-fit: contain;
+    z-index: 2;
+}
+
+/*
+  NEW badge:
+  Positioned so it sits at the top-right of the circle,
+  only slightly overlapping the edge — matching the Figma design.
+  top: ~8% of circle height, right: -28px pulls it just outside the edge.
+*/
 .badge {
     position: absolute;
-    top: 24px;
-    right: -5px;
+    top: 28px;
+    right: -28px;
     font-size: 14px;
     font-weight: 700;
     color: white;
     background: #00ff88;
-    padding: 5px 13px;
+    padding: 5px 14px;
     border-radius: 10px;
     letter-spacing: 0.5px;
-    
+    z-index: 3;
+    white-space: nowrap;
 }
 
+/* Banner text block */
 .banner-content {
     position: absolute;
     top: 510px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    width: 560px;
+    width: 580px;
 }
 
 .banner-content h1 {
@@ -207,6 +237,7 @@ body {
     transform: scale(1.04);
 }
 
+/* ── ABOUT ──────────────────────────────────────── */
 .about {
     max-width: 1600px;
     margin: 0 auto;
@@ -273,6 +304,7 @@ body {
     text-align: center;
 }
 
+/* ── WHY CHOOSE ─────────────────────────────────── */
 .why {
     max-width: 1600px;
     margin: 0 auto;
@@ -362,6 +394,7 @@ body {
     gap: 24px;
 }
 
+/* ── EPISODES + HOST CONTAINER ──────────────────── */
 .ep-host-container {
     max-width: 1600px;
     margin: 0 auto;
@@ -379,6 +412,7 @@ body {
     margin-bottom: 48px;
 }
 
+/* ── FEATURED EPISODES ──────────────────────────── */
 .episodes {
     max-width: 1200px;
     width: 100%;
@@ -459,6 +493,7 @@ body {
     filter: invert(67%) sepia(98%) saturate(400%) hue-rotate(90deg) brightness(1.2);
 }
 
+/* ── MEET THE HOST ──────────────────────────────── */
 .host-section {
     max-width: 1200px;
     width: 100%;
@@ -537,6 +572,7 @@ body {
     transform: scale(1.12);
 }
 
+/* ── FOOTER ─────────────────────────────────────── */
 .footer {
     width: 100%;
     min-height: 412px;
@@ -624,6 +660,7 @@ body {
     color: rgba(255, 255, 255, 0.40);
 }
 
+/* ── RESPONSIVE: MEDIUM (576px – 992px) ─────────── */
 @media (max-width: 992px) {
 
     .navbar {
@@ -711,6 +748,7 @@ body {
     }
 }
 
+/* ── RESPONSIVE: SMALL (up to 576px) ───────────── */
 @media (max-width: 576px) {
 
     .navbar {
@@ -735,19 +773,21 @@ body {
         padding-bottom: 56px;
     }
 
+    /* On mobile the circle stacks in normal flow */
     .circle-wrap {
         position: relative;
         top: auto;
         left: auto;
         transform: none;
         margin: 40px auto 0;
-        width: 260px;
-        height: 260px;
+        width: 240px;
+        height: 240px;
     }
 
+    /* Badge repositioned for smaller circle */
     .badge {
-        top: 16px;
-        right: -18px;
+        top: 18px;
+        right: -22px;
         font-size: 12px;
         padding: 4px 10px;
     }
@@ -782,6 +822,7 @@ body {
         font-size: 15px;
     }
 
+    /* Stats become 2×2 grid on small screens */
     .about-stats {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -862,6 +903,7 @@ body {
         font-size: 36px;
     }
 
+    /* Footer platforms: 2-column grid on mobile */
     .footer-platforms {
         display: grid;
         grid-template-columns: 1fr 1fr;
